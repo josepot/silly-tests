@@ -1,0 +1,19 @@
+{
+  "env": {
+    "development": {
+      "plugins": [
+        "react-hot-loader/babel"
+      ],
+    },
+  },
+  "presets": [
+    ["@babel/preset-env", {
+      "targets": "> 0.25%, not dead",
+      "loose": true
+    }]
+  ],
+  "plugins": [
+    ["@babel/transform-react-jsx"],
+    ["@babel/transform-spread"]
+  ]
+}
