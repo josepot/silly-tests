@@ -1,3 +1,5 @@
 import generateData from './generateProductsData';
 
-export const getProducts = () => Promise.resolve(generateData());
+const wait = ms => new Promise(res => setTimeout(res, ms));
+
+export const getProducts = () => wait(2000).then(generateData);
