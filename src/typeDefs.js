@@ -20,8 +20,16 @@ const client = gql`
     products: [Product!]!
   }
 
+  extend type Product {
+    count: Int!
+  }
+
   extend type Query {
     productsByDate: [DateProducts]!
+  }
+
+  type Mutation {
+    changeProductAmount(productId: ID!, amount: Int): [Product]!
   }
 `;
 
