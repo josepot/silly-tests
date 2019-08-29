@@ -5,9 +5,11 @@ import ProductsByDate from "./ProductsByDate";
 
 export default function App() {
   return (
-    <ProductsAmountProvider>
-      <ProductsList />
-      <ProductsByDate />
-    </ProductsAmountProvider>
+    <>
+      <ProductsAmountProvider>
+        <ProductsList />
+        <ProductsByDate />
+      </ProductsAmountProvider>
+    </>
   );
 }

@@ -1,10 +1,15 @@
 import React from "react";
 import Counter from "./Counter";
-import ProductsLoader from "./ProductsLoader";
 import { useSetProductAmount } from "../products-amount";
+import useProducts from "./useProducts";
 
-function Products({ products }) {
+export default function ProductsList() {
+  const { products, loading, error } = useProducts();
   const productSetter = useSetProductAmount();
+
+  if (loading) return "Loading";
+  if (error) return "Error";
+
   return (
     <>
       <ul>
@@ -22,5 +27,3 @@ function Products({ products }) {
     </>
   );
 }
-
-export default () => <ProductsLoader Component={Products} />;

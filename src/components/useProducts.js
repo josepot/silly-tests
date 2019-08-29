@@ -1,14 +1,12 @@
-import React from "react";
 import { useQuery } from "@apollo/react-hooks";
 import GET_CART_ITEMS from "../queries/GetCartItems";
 import { useProductAmounts } from "../products-amount";
 
-export default function ProductsLoader({ Component }) {
+export default () => {
   const { loading, error, data } = useQuery(GET_CART_ITEMS);
   const productAmounts = useProductAmounts();
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error :(</p>;
+  if (loading || error) return { loading, error };
 
   const products = data.cart
     .map(product => ({
@@ -20,5 +18,5 @@ export default function ProductsLoader({ Component }) {
     }))
     .filter(({ amount }) => amount > 0);
 
-  return <Component products={products} />;
-}
+  return { loading, error, products };
+};

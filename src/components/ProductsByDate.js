@@ -1,9 +1,9 @@
 import React from "react";
-import ProductsLoader from "./ProductsLoader";
+import useProducts from "./useProducts";
 
-const fromCartToGrouppedProducts = cart =>
+const fromCartToGrouppedProducts = products =>
   Object.values(
-    cart.reduce((result, product) => {
+    products.reduce((result, product) => {
       const { dateOfArrival, price, amount } = product;
       if (!result[dateOfArrival]) {
         result[dateOfArrival] = {
@@ -21,7 +21,12 @@ const fromCartToGrouppedProducts = cart =>
     totalAmount: totalAmount.toFixed(2)
   }));
 
-export function ProductsByDate({ products }) {
+export default function ProductsByDate() {
+  const { products, loading, error } = useProducts();
+
+  if (loading) return "Loading";
+  if (error) return "Error";
+
   return (
     <ul>
       {fromCartToGrouppedProducts(products).map(
@@ -39,5 +44,3 @@ export function ProductsByDate({ products }) {
     </ul>
   );
 }
-
-export default () => <ProductsLoader Component={ProductsByDate} />;
