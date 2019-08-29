@@ -1,9 +1,9 @@
-import gql from 'graphql-tag';
+import gql from "graphql-tag";
 
 const server = gql`
   type Product {
     id: ID!
-    name: String!,
+    name: String!
     price: Float!
     dateOfArrival: String!
   }
@@ -13,24 +13,4 @@ const server = gql`
   }
 `;
 
-const client = gql`
-  type DateProducts {
-    date: String
-    totalAmount: Float
-    products: [Product!]!
-  }
-
-  extend type Product {
-    count: Int!
-  }
-
-  extend type Query {
-    productsByDate: [DateProducts]!
-  }
-
-  type Mutation {
-    changeProductAmount(productId: ID!, amount: Int): [Product]!
-  }
-`;
-
-export default [server, client];
+export default [server];

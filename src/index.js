@@ -1,15 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-import App from "./App";
-
-import Providers from "./Providers";
+import App from "./components/App";
+import RootProviders from "./RootProviders";
 
 export const render = AppComponent => {
   ReactDOM.render(
-    <Providers>
+    <RootProviders>
       <AppComponent />
-    </Providers>,
+    </RootProviders>,
     document.getElementById("root")
   );
 };
@@ -17,7 +16,7 @@ export const render = AppComponent => {
 render(App);
 
 if (process.env.NODE_ENV !== "production" && module.hot) {
-  module.hot.accept(["./App"], () => {
+  module.hot.accept(["./components/App"], () => {
     render(App);
   });
 }

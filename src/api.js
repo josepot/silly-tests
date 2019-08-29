@@ -1,4 +1,4 @@
-import generateData from './generateProductsData';
+import generateData from "./generateProductsData";
 
 const wait = ms => new Promise(res => setTimeout(res, ms));
 
